@@ -55,6 +55,7 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Utilities',
@@ -63,7 +64,10 @@ setup(
         # eg: 'keyword1', 'keyword2', 'keyword3',
     ],
     install_requires=[
-        'click',
+        'click'==6.2,
+        'wheel'==0.24.0,
+        'py'==1.4.31,
+        'pytest'==2.8.3,
     ],
     extras_require={
         # eg:
