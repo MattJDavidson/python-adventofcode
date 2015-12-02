@@ -23,7 +23,6 @@ def read(*names, **kwargs):
     ).read()
 
 
-
 setup(
     name='advent',
     version='0.1.0',
@@ -62,10 +61,12 @@ setup(
         # eg: 'keyword1', 'keyword2', 'keyword3',
     ],
     install_requires=[
-        'click'==6.2,
-        'wheel'==0.24.0,
-        'py'==1.4.31,
-        'pytest'==2.8.3,
+        'click==6.2',
+        'wheel==0.24.0',
+    ],
+    tests_requires=[
+        'py==1.4.31',
+        'pytest==2.8.3',
     ],
     extras_require={
         # eg:
