@@ -1,4 +1,3 @@
-
 from click.testing import CliRunner
 
 from advent.__main__ import main
