@@ -67,6 +67,6 @@ setup(
     keywords=[
         # eg: 'keyword1', 'keyword2', 'keyword3',
     ],
-    install_requires=[],
+    install_requires=['click==6.2'],
     cmdclass={'test': PyTest},
 )
