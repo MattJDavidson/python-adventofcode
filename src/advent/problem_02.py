@@ -32,7 +32,6 @@ def format_lines(text):
     return [[int(i) for i in str.split(line, 'x')] for line in str.split(text)]
 
 
-
 def calculate_area(length, width, height):
     """Calculates the area + slack based on dimensions"""
     area_of_sides = [length*width,
@@ -54,9 +53,7 @@ def main(source_file):
     data = ''
     with open(source_file) as source:
         data = source.read()
-    print(total_area(data))
-
-
+    print('Total required wrapping paper for part 1 is {}'.format(total_area(data)))
 
 
 if __name__ == "__main__":
