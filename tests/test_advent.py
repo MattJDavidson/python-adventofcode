@@ -9,6 +9,7 @@ num_problems_solved = int(__version__.split('.')[1])
 problem_modules = [importlib.import_module('advent.problem_{:02d}'.format(i))
                    for i in range(1, num_problems_solved+1)]
 
+@pytest.mark.integration
 def test_problems():
     with open('data/solutions.txt') as solutions_file:
         all_solutions = solutions_file.read().split()

@@ -26,14 +26,14 @@ import sys
 import click
 
 
-def acceptable_hash(hash):
+def acceptable_hash(hash, check_length=5):
     acceptable = False
     try:
-        acceptable = all(char == '0' for char in hash[:5])
+        acceptable = all(char == '0' for char in hash[:check_length])
     except:
         #  We don't really care why it fails. Meh.
         pass
-    return acceptable and len(hash) >= 5
+    return acceptable and len(hash) >= check_length
 
 
 def generate_hash(token, num):
@@ -41,11 +41,11 @@ def generate_hash(token, num):
         'utf-8')).hexdigest()
 
 
-def first_acceptable_hash(token, floor=1, ceiling=999999):
+def first_acceptable_hash(token, check_length=5, floor=1, ceiling=999999):
     first = None
     for i in range(floor, ceiling):
         hash = generate_hash(token, i)
-        if acceptable_hash(hash):
+        if acceptable_hash(hash, check_length):
             first = i
             break
     return first
@@ -56,7 +56,7 @@ def calculate_solution_1(text):
 
 
 def calculate_solution_2(text):
-    return 0
+    return first_acceptable_hash(text, check_length=6, ceiling=9999999)
 
 
 @click.command()
@@ -68,6 +68,7 @@ def main(source_file):
     with open(source_file) as source:
         data = source.read()
     print(first_acceptable_hash(data))
+    print(first_acceptable_hash(data, check_length=6, ceiling=9999999))
 
 
 if __name__ == "__main__":

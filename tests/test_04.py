@@ -8,10 +8,16 @@ def test_acceptable_hash():
     assert acceptable_hash('00000') == True
     assert acceptable_hash('000001dbbfa') == True
     assert acceptable_hash('000006136ef') == True
+    assert acceptable_hash('000000', check_length=6) == True
+    assert acceptable_hash('0000001dbbfa', check_length=6) == True
+    assert acceptable_hash('0000006136ef', check_length=6) == True
 
-    assert acceptable_hash('00001') == False
     assert acceptable_hash('') == False
+    assert acceptable_hash('00001') == False
     assert acceptable_hash('100000') == False
+
+    assert acceptable_hash('00000', check_length=6) == False
+    assert acceptable_hash('000001', check_length=6) == False
 
 
 def test_generate_hash():
