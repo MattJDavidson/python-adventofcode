@@ -49,6 +49,10 @@ def map_known_points(text):
     return points
 
 
+def number_of_houses_covered(text):
+    return len(map_known_points(text))
+
+
 @click.command()
 @click.option('--source_file', default='data/03.txt',
               help='source data file for problem')
@@ -58,7 +62,7 @@ def main(source_file):
     with open(source_file) as source:
         data = source.read()
     print('Santa gave at least one present to {} houses.'.format(
-        len(map_known_points(data))))
+        number_of_houses_covered(text)))
 
 
 if __name__ == "__main__":
