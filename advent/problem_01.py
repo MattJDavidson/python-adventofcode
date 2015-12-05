@@ -73,6 +73,14 @@ def get_first_negative_floor(text):
     return negative_floor
 
 
+def calculate_solution_1(data):
+    return get_floor_number(data)
+
+
+def calculate_solution_2(data):
+    return get_first_negative_floor(data)
+
+
 @click.command()
 @click.option('--source_file', default='data/01.txt',
               help='source data file for problem')

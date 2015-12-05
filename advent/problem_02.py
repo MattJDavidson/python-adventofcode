@@ -76,6 +76,14 @@ def total_wribbon(text):
     return sum(calculate_wribbon(dimensions) for dimensions in format_lines(text))
 
 
+def calculate_solution_1(data):
+    return total_area(data)
+
+
+def calculate_solution_2(data):
+    return total_wribbon(data)
+
+
 @click.command()
 @click.option('--source_file', default='data/02.txt',
               help='source data file for problem')
