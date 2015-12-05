@@ -57,17 +57,13 @@ def total_nice_strings(text):
 
 
 def non_overlapping_pair(text):
-    found = False
     for i, char0 in enumerate(text[:-2]):
-        pair = (char0, text[i+1])
-        if found:
+        if '{}{}'.format(char0, text[i+1]) in text[i+2:]:
+            found = True
             break
+    else:
+        found = False
 
-        remaining_text = text[i+2:]
-        for j, char1 in enumerate(remaining_text[:-1]):
-            if (char1, remaining_text[j+1]) == pair:
-                found = True
-                break
     return found
 
 
