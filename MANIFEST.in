@@ -16,6 +16,7 @@ include CONTRIBUTING.rst
 include LICENSE
 include README.rst
 include runtests.py
+include pytest.ini
 
 recursive-include data *.txt
 
