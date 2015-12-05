@@ -1,9 +1,9 @@
 [paths]
-source = src
+source = advent
 
 [run]
 branch = True
-source = src
+source = advent
 parallel = true
 
 [report]
