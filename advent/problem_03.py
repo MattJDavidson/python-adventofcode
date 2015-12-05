@@ -22,6 +22,25 @@ east.
 house at his starting/ending location.
 - ^v^v^v^v^v delivers a bunch of presents
 to some very lucky children at only 2 houses.
+
+--- Part Two ---
+
+The next year, to speed up the process, Santa creates a robot version of
+himself, Robo-Santa, to deliver presents with him.
+
+Santa and Robo-Santa start at the same location (delivering two presents to the
+same starting house), then take turns moving based on instructions from the
+elf, who is eggnoggedly reading from the same script as the previous year.
+
+This year, how many houses receive at least one present?
+
+For example:
+- ^v delivers presents to 3 houses, because Santa goes north, and then Robo-Santa
+  goes south.
+- ^>v< now delivers presents to 3 houses, and Santa and Robo-Santa
+  end up back where they started.
+- ^v^v^v^v^v now delivers presents to 11 houses,
+  with Santa going one direction and Robo-Santa going the other.
 """
 import sys
 
@@ -40,7 +59,7 @@ def update_point(move, point):
             point[1]+moves.get(move, (0, 0))[1])
 
 
-def map_known_points(text):
+def map_single_delivery(text):
     point = (0, 0)
     points = set({point})
     for move in text:
@@ -49,8 +68,24 @@ def map_known_points(text):
     return points
 
 
-def number_of_houses_covered(text):
-    return len(map_known_points(text))
+def number_of_houses_covered(text, robo_santa=False):
+    return len(map_single_delivery(text)) if not robo_santa else \
+        len(map_multiple_deliveries(text))
+
+
+def split_directions(directions):
+    lists = ('', '')
+    try:
+        lists = directions[0::2], directions[1::2]
+    except IndexError:
+        pass
+    return lists
+
+
+def map_multiple_deliveries(text):
+    directions = split_directions(text)
+    points = map_single_delivery(directions[0])
+    return points.union(map_single_delivery(directions[1]))
 
 
 def calculate_solution_1(text):
@@ -58,8 +93,7 @@ def calculate_solution_1(text):
 
 
 def calculate_solution_2(text):
-    #  TODO
-    return 0
+    return number_of_houses_covered(text, robo_santa=True)
 
 
 @click.command()
