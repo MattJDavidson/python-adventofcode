@@ -65,7 +65,7 @@ OFF = -1
 
 
 def count_lit_lights(lights):
-    return sum([Counter(row).get(1,0) for row in lights])
+    return sum([Counter(row).get(1, 0) for row in lights])
 
 
 def count_brightness(lights):
@@ -74,7 +74,7 @@ def count_brightness(lights):
 
 def empty_grid(x=1000, y=1000, new_commands=False):
     OFF = 0 if new_commands else -1
-    return [[OFF] * x for _ in range(y)] if not (x==0 or y==0) else [[]]
+    return [[OFF] * x for _ in range(y)] if not (x == 0 or y == 0) else [[]]
 
 
 def modify_light(light, new_commands=False, modification="toggle"):
